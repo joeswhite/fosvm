@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/sbin/vzlist -H -o ip

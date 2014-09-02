@@ -1,0 +1,22 @@
+2014-09-02 Joseph S. White <joe@freicoin.us>
+	* fosvm v0.03a (github commit): Added to github, relicensed as AGPL
+
+2009-05-18  Joseph S. White  <joe@freicoin.us>
+
+    * fosvm v0.03a (Many changes): Added Change RAM, Start/Stop/restart VPS modules to fosvm
+         +Made crontab php scripts have all config settings
+           in one config file located in /fosvm/config
+         +Install script added, make sure to untar to /fosvm directory.
+         +Updated install documentary accordingly
+
+2009-05-15  Joseph S. White  <joe@freicoin.us>
+
+    * fosvm v0.02a (Create VPS): Added Create VPS module to  fosvm
+         +Added some missing links to the admin pages.
+
+
+2009-05-15  Joseph S. White  <joe@freicoin.us>
+
+    * fosvm v0.01a (entire script): First public release
+
+

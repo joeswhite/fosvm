@@ -1,0 +1,34 @@
+Continue scripting admin side of fosvm
+Script all of client side of fosvm
+Script add/del user/admin module (for admins)
+Script better bandwidth monitoring so more than one ip for VPS is combined in bw stats, as well as if container is destroyed and a new user has same ip, bandwidth is reset.
+Write nice template
+
+
+  
+write better documentation
+write better readme.txt
+write better copy/paste howto.txt
+
+party
+write fosvm to have slave servers and a master
+write client frontend
+do a nice template
+get free money
+w00t!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+script uninstall.sh (if complaints recieved)

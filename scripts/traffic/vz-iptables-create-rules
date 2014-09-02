@@ -1,0 +1,4 @@
+#!/bin/bash
+for i in `/fosvm/scripts/traffic/vz-all-running-ip`;  do /sbin/iptables -D FORWARD -s $i; iptables -D FORWARD -d $i; done >/dev/null 2>&1
+for i in `/fosvm/scripts/traffic/vz-all-running-ip`;  do /sbin/iptables -A FORWARD -s $i; iptables -A FORWARD -d $i; done >/dev/null 2>&1
+

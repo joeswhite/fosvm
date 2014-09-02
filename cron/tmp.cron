@@ -1,0 +1,7 @@
+* * * * * /fosvm/scripts/traffic/vz-generate-traffic-log  > /fosvm/logs/cron.log 2>&1
+* * * * * php -q /fosvm/scripts/ramchange/ramchange.php > /fosvm/logs/ramchange.log 2>&1
+* * * * * php -q /fosvm/scripts/stopvps/stopvps.php > /fosvm/logs/stopvps.log 2>&1
+* * * * * php -q /fosvm/scripts/startvps/startvps.php > /fosvm/logs/startvps.log 2>&1
+* * * * * php -q /fosvm/scripts/restartvps/restartvps.php > /fosvm/logs/restartvps.log 2>&1
+26 6 * * * /etc/webmin/cron/tempdelete.pl
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * php -q /fosvm/scripts/oschange/oschange.php > /fosvm/logs/oschange.log 2>&1

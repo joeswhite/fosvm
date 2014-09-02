@@ -1,0 +1,43 @@
+#!/bin/bash
+
+##This script was taken from the OpenVZ wiki
+##here: http://wiki.openvz.org/Traffic_accounting_with_iptables
+
+##This script is part of a set of scripts that monitors bandwidth and updates it via iptables.
+##you are going to need to edit some of the script, read through it and ask questions if you need to
+
+
+##edit serverip to your server's ip address
+serverip="12.13.37.101"
+
+trafficlog="/fosvm/logs/$HOSTNAME-traffic.log"
+for i in `/fosvm/scripts/traffic/vz-all-running-ip` ;
+ do
+  echo -n `date "+%Y-%m-%d %H:%M:%S"` >> $trafficlog
+  echo -n " $i " >> $trafficlog
+  echo `/sbin/iptables -nvx -L FORWARD | grep " $i " | tr -s [:blank:] |cut -d' ' -f3| awk '{sum+=$1} END {print sum;}'` >> $trafficlog
+ done
+ # reset the counter
+ /sbin/iptables -Z
+ # update the iptables rules if there is a any change in containers
+ /fosvm/scripts/traffic/vz-iptables-create-rules
+
+
+  #You need to uncomment the line that reflects the directory you copied www/ to 
+  #However you may need to edit this further for your own setup
+
+##XAMPP install with fosvm in fosvm/ directory
+#  cp $trafficlog /opt/lampp/htdocs/fosvm/modules/trafficread/tmp/$HOSTNAME-traffic
+##Apache2 install with fosvm in fosvm/ directory
+#  cp $trafficlog /var/www/html/fosvm/modules/trafficread/tmp/$HOSTNAME-traffic
+
+
+ # clear the copied trafficlog
+ cp /dev/null $trafficlog
+ # start a php script to store the traffic in a MySQL Database on the HOST-TO-SHOW-THE-TRAFFIC-TO-THE-USERS
+ # please mind to use .htaccess to secure this
+
+  wget -q http://$serverip/fosvm/modules/trafficread/traffic-read.php?HN=$HOSTNAME -O /dev/null
+
+echo `date`
+echo $serverip $HOSTNAME
